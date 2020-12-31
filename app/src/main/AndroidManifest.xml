@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mark8">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.mark8.view.MainActivity"
+            android:label="@string/title_activity_main"></activity>
+        <activity
+            android:name="com.mark8.view.SplashActivity"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.ProductActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+
+            />
+        <activity android:name="com.mark8.view.LoginActivity" />
+        <activity
+            android:name="com.mark8.view.SignUpActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.mark8.view.DetailsActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.mark8.view.AllMobilesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.AllMobilesActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.AllLaptopsActivity"
+            android:label="@string/all_laptops"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.AllMobilesActivity"
+            android:label="@string/all_mobiles"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.CartActivity"
+            android:label="@string/cart"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.WishListActivity"
+            android:label="@string/my_wishList"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.AccountActivity"
+            android:label="@string/my_account"
+            android:parentActivityName="com.mark8.view.ProductActivity"
+            android:theme="@style/AccountTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.AddProductActivity"
+            android:label="@string/add_product"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.HelpActivity"
+            android:label="@string/help_center"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.AllReviewsActivity"
+            android:label="@string/reviews"
+            android:parentActivityName="com.mark8.view.DetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.DetailsActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.WriteReviewActivity"
+            android:label="@string/write_review"
+            android:parentActivityName="com.mark8.view.DetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.DetailsActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.PasswordActivity"
+            android:label="@string/change_password"
+            android:parentActivityName="com.mark8.view.AccountActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.AccountActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.CategoryActivity"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.PasswordAssistantActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.mark8.view.AuthenticationActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.mark8.view.NewsFeedActivity"
+            android:label="@string/news_feed"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity android:name="com.mark8.view.ShippingAddressActivity" />
+        <activity android:name="com.mark8.view.OrderProductActivity" />
+        <activity
+            android:name="com.mark8.view.OrdersActivity"
+            android:label="@string/orders"
+            android:parentActivityName="com.mark8.view.ProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.ProductActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.StatusActivity"
+            android:label="@string/status"
+            android:parentActivityName="com.mark8.view.OrdersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mark8.view.OrdersActivity" />
+        </activity>
+        <activity
+            android:name="com.mark8.view.SearchActivity"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name="com.mark8.view.ResultActivity" />
+
+        <receiver android:name="com.mark8.receiver.NetworkChangeReceiver" />
+    </application>
+
+</manifest>
