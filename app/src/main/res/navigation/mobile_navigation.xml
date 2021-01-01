@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_orders"
         android:name="com.mark8.view.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
@@ -22,4 +22,9 @@
         android:name="com.mark8.view.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_location"
+        android:name="com.mark8.view.ui.location.MapsFragment"
+        android:label="@string/title_location"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

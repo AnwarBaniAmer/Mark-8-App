@@ -6,11 +6,13 @@
         android:id="@+id/action_cart"
         android:icon="@drawable/ic_shopping_cart_white"
         android:title="@string/cart"
+        android:iconTint="@color/title"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_addProduct"
         android:icon="@drawable/ic_add"
         android:title="@string/add_product"
+        android:iconTint="@color/title"
         app:showAsAction="ifRoom" />
 </menu>

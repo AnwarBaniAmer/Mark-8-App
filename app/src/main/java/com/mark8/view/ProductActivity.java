@@ -2,29 +2,34 @@ package com.mark8.view;
 
 import android.Manifest;
 import android.app.Dialog;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
+
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -105,13 +110,14 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale(this);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product);
 
         int userID = LoginUtils.getInstance(this).getUserInfo().getId();
 
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
         productViewModel.loadMobiles("mobile", userID);
-        productViewModel.loadLaptops("laptop",userID);
+        productViewModel.loadLaptops("laptop", userID);
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         historyViewModel.loadHistory(userID);
         uploadPhotoViewModel = ViewModelProviders.of(this).get(UploadPhotoViewModel.class);
@@ -141,7 +147,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_orders, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -151,7 +157,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void setUpViews() {
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
+        //   ActionBar actionbar = getSupportActionBar();
         DrawerLayout drawer = binding.drawerLayout;
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -170,9 +176,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
 
-                if(drawer.isDrawerOpen(GravityCompat.START)){
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);
-                }else {
+                } else {
                     drawer.openDrawer(GravityCompat.START);
                 }
 
@@ -583,12 +589,12 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private PagedList.Callback productCallback = new PagedList.Callback() {
         @Override
         public void onChanged(int position, int count) {
-            Log.d(TAG, "onChanged: "+ count);
+            Log.d(TAG, "onChanged: " + count);
         }
 
         @Override
         public void onInserted(int position, int count) {
-            Log.d(TAG, "onInserted: "+ count);
+            Log.d(TAG, "onInserted: " + count);
             if (count != 0) {
                 binding.included.content.textViewHistory.setVisibility(View.VISIBLE);
                 historyAdapter.notifyOnInsertedItem(position);
@@ -598,7 +604,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         @Override
         public void onRemoved(int position, int count) {
-            Log.d(TAG, "onRemoved: "+ count);
+            Log.d(TAG, "onRemoved: " + count);
         }
     };
 

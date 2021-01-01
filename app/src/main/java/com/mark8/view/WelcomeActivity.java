@@ -19,7 +19,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
 
         binding.loginBtn.setOnClickListener(this);
-        binding.signUpTxt.setOnClickListener(this);
+     binding.signUpTxt.setOnClickListener(this);
         binding.logo.setOnClickListener(this);
     }
 

@@ -25,9 +25,9 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_help);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.help_center));
+//
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setTitle(getResources().getString(R.string.help_center));
 
         setUpRecyclerView();
 
