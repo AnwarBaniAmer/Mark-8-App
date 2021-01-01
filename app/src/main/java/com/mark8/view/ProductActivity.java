@@ -149,11 +149,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void setUpViews() {
-        Toolbar toolbar = binding.included.toolbar;
+        Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
-        actionbar.setHomeAsUpIndicator(R.drawable.menu);
-        actionbar.setDisplayHomeAsUpEnabled(true);
         DrawerLayout drawer = binding.drawerLayout;
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -161,6 +159,25 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        toolbar.setTitle(getResources().getString(R.string.app_name));
+
+
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle.setDrawerIndicatorEnabled(false); //disable "hamburger to arrow" drawable
+        toggle.setHomeAsUpIndicator(R.drawable.menu); //set your own
+        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(drawer.isDrawerOpen(GravityCompat.START)){
+                    drawer.closeDrawer(GravityCompat.START);
+                }else {
+                    drawer.openDrawer(GravityCompat.START);
+                }
+
+            }
+        });
         binding.navView.setNavigationItemSelectedListener(this);
 
         View headerContainer = binding.navView.getHeaderView(0);

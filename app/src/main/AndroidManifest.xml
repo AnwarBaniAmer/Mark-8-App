@@ -16,11 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".view.WelcomeActivity"></activity>
         <activity
-            android:name="com.mark8.view.MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:name=".view.MainActivity"
+            android:label="@string/title_activity_main" />
         <activity
-            android:name="com.mark8.view.SplashActivity"
+            android:name=".view.SplashActivity"
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,148 +35,145 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name="com.mark8.view.ProductActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-
-            />
-        <activity android:name="com.mark8.view.LoginActivity" />
+            android:name=".view.ProductActivity" />
+        <activity android:name=".view.LoginActivity" />
         <activity
-            android:name="com.mark8.view.SignUpActivity"
+            android:name=".view.SignUpActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="com.mark8.view.DetailsActivity"
+            android:name=".view.DetailsActivity"
             android:launchMode="singleTop"
-            android:parentActivityName="com.mark8.view.AllMobilesActivity">
+            android:parentActivityName=".view.AllMobilesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.AllMobilesActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.AllLaptopsActivity"
-            android:label="@string/all_laptops"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:name=".view.AllLaptopsActivity"
+            android:label="@string/best_sell"
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.AllMobilesActivity"
+            android:name=".view.AllMobilesActivity"
             android:label="@string/all_mobiles"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.CartActivity"
+            android:name=".view.CartActivity"
             android:label="@string/cart"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.WishListActivity"
+            android:name=".view.WishListActivity"
             android:label="@string/my_wishList"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.AccountActivity"
+            android:name=".view.AccountActivity"
             android:label="@string/my_account"
-            android:parentActivityName="com.mark8.view.ProductActivity"
+            android:parentActivityName=".view.ProductActivity"
             android:theme="@style/AccountTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.AddProductActivity"
+            android:name=".view.AddProductActivity"
             android:label="@string/add_product"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.HelpActivity"
+            android:name=".view.HelpActivity"
             android:label="@string/help_center"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.AllReviewsActivity"
+            android:name=".view.AllReviewsActivity"
             android:label="@string/reviews"
-            android:parentActivityName="com.mark8.view.DetailsActivity">
+            android:parentActivityName=".view.DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.DetailsActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.WriteReviewActivity"
+            android:name=".view.WriteReviewActivity"
             android:label="@string/write_review"
-            android:parentActivityName="com.mark8.view.DetailsActivity">
+            android:parentActivityName=".view.DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.DetailsActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.PasswordActivity"
+            android:name=".view.PasswordActivity"
             android:label="@string/change_password"
-            android:parentActivityName="com.mark8.view.AccountActivity">
+            android:parentActivityName=".view.AccountActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.AccountActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.CategoryActivity"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:name=".view.CategoryActivity"
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.PasswordAssistantActivity"
+            android:name=".view.PasswordAssistantActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="com.mark8.view.AuthenticationActivity"
+            android:name=".view.AuthenticationActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="com.mark8.view.NewsFeedActivity"
+            android:name=".view.NewsFeedActivity"
             android:label="@string/news_feed"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
-        <activity android:name="com.mark8.view.ShippingAddressActivity" />
-        <activity android:name="com.mark8.view.OrderProductActivity" />
+        <activity android:name=".view.ShippingAddressActivity" />
+        <activity android:name=".view.OrderProductActivity" />
         <activity
-            android:name="com.mark8.view.OrdersActivity"
+            android:name=".view.OrdersActivity"
             android:label="@string/orders"
-            android:parentActivityName="com.mark8.view.ProductActivity">
+            android:parentActivityName=".view.ProductActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.StatusActivity"
+            android:name=".view.StatusActivity"
             android:label="@string/status"
-            android:parentActivityName="com.mark8.view.OrdersActivity">
+            android:parentActivityName=".view.OrdersActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.OrdersActivity" />
         </activity>
         <activity
-            android:name="com.mark8.view.SearchActivity"
+            android:name=".view.SearchActivity"
             android:theme="@style/noAnimTheme" />
-        <activity android:name="com.mark8.view.ResultActivity" />
+        <activity android:name=".view.ResultActivity" />
 
-        <receiver android:name="com.mark8.receiver.NetworkChangeReceiver" />
+        <receiver android:name=".receiver.NetworkChangeReceiver" />
     </application>
 
 </manifest>

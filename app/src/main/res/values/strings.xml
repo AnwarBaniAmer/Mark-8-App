@@ -36,8 +36,8 @@
     <string name="add_to_favourite">Add to Favourite</string>
     <string name="_5399_egp">5399 EGP</string>
     <string name="name_required">Name Required</string>
-    <string name="all_laptops">All Laptops</string>
-    <string name="all_mobiles">All Mobiles</string>
+    <string name="best_sell">Best Sell</string>
+    <string name="all_mobiles">Category</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="free_shipping">FREE Shipping</string>
     <string name="fulfilled_by_mark8">Fulfilled by mark8</string>
@@ -189,5 +189,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="welcome">Welcome To MARK 8 App</string>
+    <string name="explore_us">Explore Us</string>
 
 </resources>

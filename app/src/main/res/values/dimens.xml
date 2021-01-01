@@ -31,4 +31,5 @@
     <dimen name="dimen25sp">25sp</dimen>
     <dimen name="dimen200dp">200dp</dimen>
     <dimen name="dimen35sp">35sp</dimen>
+    <dimen name="toolbarHeight">56dp</dimen>
 </resources>

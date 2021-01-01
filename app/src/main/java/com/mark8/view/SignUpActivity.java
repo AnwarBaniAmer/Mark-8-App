@@ -37,7 +37,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         binding.buttonSignUp.setOnClickListener(this);
         binding.textViewLogin.setOnClickListener(this);
-
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setTitle("");
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
         registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
 
         setBoldStyle();

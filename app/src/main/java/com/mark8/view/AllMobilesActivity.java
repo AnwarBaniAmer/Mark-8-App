@@ -3,10 +3,15 @@ package com.mark8.view;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
+
 import android.content.Intent;
 import android.content.res.Configuration;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +27,7 @@ import com.mark8.storage.LoginUtils;
 import static com.mark8.storage.LanguageUtils.loadLocale;
 import static com.mark8.utils.Constant.PRODUCT;
 
-public class AllMobilesActivity extends AppCompatActivity implements ProductAdapter.ProductAdapterOnClickHandler{
+public class AllMobilesActivity extends AppCompatActivity implements ProductAdapter.ProductAdapterOnClickHandler {
 
     private ActivityAllMobilesBinding binding;
     private ProductAdapter productAdapter;
@@ -34,8 +39,14 @@ public class AllMobilesActivity extends AppCompatActivity implements ProductAdap
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_mobiles);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.all_mobiles));
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setTitle(getResources().getString(R.string.all_mobiles));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
 
         int userID = LoginUtils.getInstance(this).getUserInfo().getId();
 
@@ -51,7 +62,7 @@ public class AllMobilesActivity extends AppCompatActivity implements ProductAdap
         // Mobiles
         binding.allMobilesRecyclerView.setLayoutManager(new GridLayoutManager(this, (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) ? 2 : 4));
         binding.allMobilesRecyclerView.setHasFixedSize(true);
-        productAdapter = new ProductAdapter(this,this);
+        productAdapter = new ProductAdapter(this, this);
     }
 
     public void getAllMobiles() {

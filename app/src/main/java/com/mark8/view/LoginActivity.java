@@ -30,13 +30,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.app_name));
-
         binding.buttonLogin.setOnClickListener(this);
         binding.textViewSignUp.setOnClickListener(this);
         binding.forgetPassword.setOnClickListener(this);
 
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setTitle("");
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
     }
 

@@ -23,14 +23,18 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, ProductActivity.class);
-                startActivity(i);
+
 
                 // Close this activity
                 finish();
                 // If user does not log in before, go to LoginActivity
                 if(!LoginUtils.getInstance(SplashActivity.this).isLoggedIn()) {
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(SplashActivity.this, ProductActivity.class);
                     startActivity(intent);
                 }
 

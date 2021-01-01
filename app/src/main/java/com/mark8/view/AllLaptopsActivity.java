@@ -7,8 +7,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -34,13 +35,18 @@ public class AllLaptopsActivity extends AppCompatActivity implements ProductAdap
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_laptops);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.all_laptops));
-
         int userID = LoginUtils.getInstance(this).getUserInfo().getId();
 
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
         productViewModel.loadLaptops("laptop",userID);
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setTitle(getResources().getString(R.string.best_sell));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
 
         setupRecyclerViews();
 

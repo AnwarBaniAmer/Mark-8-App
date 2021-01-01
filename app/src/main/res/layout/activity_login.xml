@@ -6,11 +6,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        android:background="@color/white"
         android:paddingTop="@dimen/dimen24dp"
         tools:context=".view.LoginActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight"></androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:layout_width="match_parent"
@@ -35,10 +40,10 @@
                 android:id="@+id/inputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="@string/email"
-                android:padding="@dimen/dimen5dp"
                 android:background="@drawable/custom_border"
-                android:inputType="textEmailAddress" />
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/dimen5dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--  Password Label -->
@@ -55,12 +60,12 @@
                 android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:hint="@string/password"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="5dp"
-                android:background="@drawable/custom_border"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,8 +79,8 @@
             android:layout_marginBottom="@dimen/dimen24dp"
             android:background="@drawable/splash"
             android:text="@string/sign_in"
-            android:textColor="@color/white"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="@dimen/dimen18sp" />
 
         <View

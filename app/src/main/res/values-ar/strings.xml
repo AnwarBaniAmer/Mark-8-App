@@ -37,7 +37,7 @@
     <string name="add_to_favourite">أضف إلى المفضلة</string>
     <string name="_5399_egp">5399 جنيه مصري</string>
     <string name="name_required">الاسم مطلوب</string>
-    <string name="all_laptops">جميع أجهزة الحاسوب</string>
+    <string name="best_sell">جميع أجهزة الحاسوب</string>
     <string name="all_mobiles">جميع الهواتف</string>
     <string name="no_internet_connection">لا يوجد اتصال بالإنترنت</string>
     <string name="free_shipping">FREE Shipping</string>
@@ -187,4 +187,10 @@
         <item>Baby</item>
         <item>Toy</item>
     </string-array>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="welcome">Welcome To MARK 8 App</string>
+    <string name="explore_us">Explore Us</string>
 </resources>
