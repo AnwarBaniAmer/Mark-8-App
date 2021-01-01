@@ -1,7 +1,7 @@
 package com.mark8.net;
 
-import android.arch.paging.PageKeyedDataSource;
-import android.support.annotation.NonNull;
+import androidx.paging.PageKeyedDataSource;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.mark8.model.HistoryApiResponse;
