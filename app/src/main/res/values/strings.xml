@@ -191,5 +191,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="welcome">Welcome To MARK 8 App</string>
     <string name="explore_us">Explore Us</string>
+    <string name="title_location">Location</string>
+    <string name="settings">Settings</string>
 
 </resources>

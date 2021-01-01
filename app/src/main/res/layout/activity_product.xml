@@ -10,8 +10,10 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white"></androidx.appcompat.widget.Toolbar>
+            android:paddingTop="@dimen/dimen15dp"
+            android:layout_height="@dimen/toolbarHeight">
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <androidx.drawerlayout.widget.DrawerLayout

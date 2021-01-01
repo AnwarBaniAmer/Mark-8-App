@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single"
-           android:id="@+id/group1">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single"
+        android:visible="false">
+
         <item
             android:id="@+id/nav_mobiles"
             android:icon="@drawable/ic_mobile"
@@ -25,27 +28,53 @@
             android:title="@string/toys" />
     </group>
 
-    <group android:checkableBehavior="single"
-           android:id="@+id/group2">
-            <item
-                android:id="@+id/nav_trackOrder"
-                android:icon="@drawable/ic_tracking"
-                android:title="@string/track_orders" />
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_home" />
+        <item
+            android:id="@+id/nav_myAccount"
+            android:icon="@drawable/ic_account"
+            android:title="@string/my_account" />
+        <item
+            android:id="@+id/nav_trackOrder"
+            android:icon="@drawable/ic_tracking"
+            android:visible="false"
+            android:title="@string/track_orders" />
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/ic_shopping_cart_green"
+            android:title="@string/cart" />
 
-            <item
-                android:id="@+id/nav_myAccount"
-                android:icon="@drawable/ic_account"
-                android:title="@string/my_account" />
 
-            <item
-                android:id="@+id/nav_newsFeed"
-                android:icon="@drawable/ic_newsfeed"
-                android:title="@string/news_feed" />
+        <item
+            android:id="@+id/nav_newsFeed"
+            android:icon="@drawable/ic_newsfeed"
+            android:title="@string/news_feed"
+            android:visible="false" />
 
-            <item
-                android:id="@+id/nav_wishList"
-                android:icon="@drawable/ic_favorite_border"
-                android:title="@string/my_wishList" />
+        <item
+            android:id="@+id/nav_wishList"
+            android:icon="@drawable/ic_favorite_border"
+            android:title="@string/my_wishList" />
+
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_order"
+            android:title="@string/my_orders" />
+
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_language"
+            android:title="@string/languages" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_secure"
+            android:title="@string/settings" />
+
     </group>
 </menu>
 

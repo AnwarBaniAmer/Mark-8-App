@@ -9,6 +9,8 @@
         <item name="fontFamily">@font/seagoui</item>
         <item name="android:textStyle">normal</item>
 
+
+
     </style>
     <style name="myTheme" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
         <!-- Customize your theme here. -->
@@ -22,8 +24,8 @@
     </style>
 
     <style name="App.Style.Toolbar" parent="Widget.AppCompat.ActionBar">
-        <item name="titleTextAppearance">@style/App.TextAppearance.Toolbar.Title</item>
-        <item name="background">@color/title</item>
+        <item name="titleTextAppearance">@color/title</item>
+        <item name="background">@color/white</item>
         <item name="iconTint">@color/title</item>
 
     </style>

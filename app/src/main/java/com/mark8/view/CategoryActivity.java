@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.core.content.ContextCompat;
@@ -47,11 +49,11 @@ public class CategoryActivity extends AppCompatActivity implements ProductAdapte
         loadLocale(this);
         binding= DataBindingUtil.setContentView(this, R.layout.activity_category);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.app_name));
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setTitle(getResources().getString(R.string.app_name));
 
         // This line shows Up button
-        actionBar.setDisplayHomeAsUpEnabled(true);
+     //   actionBar.setDisplayHomeAsUpEnabled(true);
 
         snack = Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.no_internet_connection), Snackbar.LENGTH_INDEFINITE);
 
@@ -59,9 +61,16 @@ public class CategoryActivity extends AppCompatActivity implements ProductAdapte
         Intent intent = getIntent();
         category = intent.getStringExtra(Constant.CATEGORY);
 
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
         // Update Toolbar
-        getSupportActionBar().setTitle(category);
 
+        binding.toolbar.setTitle(category);
         int userID = LoginUtils.getInstance(this).getUserInfo().getId();
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         categoryViewModel.loadProductsByCategory(category.toLowerCase(), userID);
