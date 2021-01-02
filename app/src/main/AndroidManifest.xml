@@ -195,4 +195,5 @@
         <receiver android:name=".receiver.NetworkChangeReceiver" />
     </application>
 
+
 </manifest>
