@@ -85,7 +85,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         binding.nameOfProduct.setText(product.getProductName());
         binding.priceOfProduct.setText(String.valueOf(product.getProductPrice()));
 
-        String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
+     //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
+        String imageUrl = "https://www.ll-mm.com/images/placeholders/iphone5-placeholder.png";
         Glide.with(this)
                 .load(imageUrl)
                 .into(binding.imageOfProduct);

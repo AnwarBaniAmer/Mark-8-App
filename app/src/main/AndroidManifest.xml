@@ -62,6 +62,7 @@
         <activity
             android:name=".view.DetailsActivity"
             android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:parentActivityName=".view.AllMobilesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -127,6 +128,7 @@
         <activity
             android:name=".view.AllReviewsActivity"
             android:label="@string/reviews"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:parentActivityName=".view.DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -135,6 +137,7 @@
         <activity
             android:name=".view.WriteReviewActivity"
             android:label="@string/write_review"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:parentActivityName=".view.DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -2,10 +2,14 @@ package com.mark8.net;
 
 import androidx.paging.PageKeyedDataSource;
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 
 import com.mark8.model.Product;
 import com.mark8.model.ProductApiResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +30,7 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Product> callback) {
         RetrofitClient.getInstance()
-                .getApi().getProductsByCategory(category, userId,FIRST_PAGE)
+                .getApi().getProductsByCategory(category, userId, FIRST_PAGE)
                 .enqueue(new Callback<ProductApiResponse>() {
                     @Override
                     public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {
@@ -39,19 +43,31 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
                         if (response.body() != null) {
                             callback.onResult(response.body().getProducts(), null, FIRST_PAGE + 1);
                         }
+
                     }
 
                     @Override
                     public void onFailure(Call<ProductApiResponse> call, Throwable t) {
-                        Log.v("onFailure", "Failed to get Products");
+                        Log.v("onFailure", "product data sourceFailed to get Products");
+                        Log.e("TAG", "onResponse: "+"if null , add products manually" );
+                        //if null , add products manually
+                        List<Product> productList = new ArrayList<Product>();
+                        // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
+                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
+                        callback.onResult(productList, null, FIRST_PAGE + 1);
                     }
+
+
                 });
     }
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Product> callback) {
         RetrofitClient.getInstance()
-                .getApi().getProductsByCategory(category,userId,params.key)
+                .getApi().getProductsByCategory(category, userId, params.key)
                 .enqueue(new Callback<ProductApiResponse>() {
                     @Override
                     public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {
@@ -72,7 +88,7 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Product> callback) {
         RetrofitClient.getInstance()
-                .getApi().getProductsByCategory(category,userId,params.key)
+                .getApi().getProductsByCategory(category, userId, params.key)
                 .enqueue(new Callback<ProductApiResponse>() {
                     @Override
                     public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {

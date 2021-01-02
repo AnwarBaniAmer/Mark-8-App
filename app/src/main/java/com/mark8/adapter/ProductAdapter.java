@@ -1,16 +1,23 @@
 package com.mark8.adapter;
 
 import android.annotation.SuppressLint;
+
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
+
 import android.content.Context;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.annotation.NonNull;
+
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,14 +92,23 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
             holder.binding.txtProductName.setText(productName);
 
             DecimalFormat formatter = new DecimalFormat("#,###,###");
+            Log.e("TAG", "onBindViewHolder: "+"getProductPrice"+product.getProductPrice() );
             String formattedPrice = formatter.format(product.getProductPrice());
-            holder.binding.txtProductPrice.setText(formattedPrice + " EGP");
+            holder.binding.txtProductPrice.setText(formattedPrice + mContext.getResources().getString(R.string.currency));
 
             // Load the Product image into ImageView
-            String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
+//            String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
+            String imageUrl = "https://www.ll-mm.com/images/placeholders/iphone5-placeholder.png";
+
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.ic_mobile);
+            requestOptions.error(R.drawable.ic_account);
+
             Glide.with(mContext)
+                    .setDefaultRequestOptions(requestOptions)
                     .load(imageUrl)
                     .into(holder.binding.imgProductImage);
+
 
             Log.d("imageUrl", imageUrl);
 
@@ -134,7 +150,7 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
 
     public void notifyOnInsertedItem(int position) {
         notifyItemInserted(position);
-        notifyItemRangeInserted(position, getCurrentList().size()-1);
+        notifyItemRangeInserted(position, getCurrentList().size() - 1);
         notifyDataSetChanged();
     }
 
@@ -230,11 +246,11 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
 
         private void insertFavoriteProduct(RequestCallback callback) {
             Favorite favorite = new Favorite(LoginUtils.getInstance(mContext).getUserInfo().getId(), product.getProductId());
-            addFavoriteViewModel.addFavorite(favorite,callback);
+            addFavoriteViewModel.addFavorite(favorite, callback);
         }
 
         private void deleteFavoriteProduct(RequestCallback callback) {
-            removeFavoriteViewModel.removeFavorite(LoginUtils.getInstance(mContext).getUserInfo().getId(), product.getProductId(),callback);
+            removeFavoriteViewModel.removeFavorite(LoginUtils.getInstance(mContext).getUserInfo().getId(), product.getProductId(), callback);
         }
 
         private void insertToCart(RequestCallback callback) {
@@ -243,7 +259,7 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
         }
 
         private void deleteFromCart(RequestCallback callback) {
-            fromCartViewModel.removeFromCart(LoginUtils.getInstance(mContext).getUserInfo().getId(), product.getProductId(),callback);
+            fromCartViewModel.removeFromCart(LoginUtils.getInstance(mContext).getUserInfo().getId(), product.getProductId(), callback);
         }
 
         private void insertProductToHistory() {

@@ -531,7 +531,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             goToCategoryActivity("Baby");
         } else if (id == R.id.nav_toys) {
             goToCategoryActivity("Toy");
-        } else if (id == R.id.nav_trackOrder) {
+        }else if (id == R.id.nav_cart) {
+            goToCategoryActivity("Toy");
+        }
+        else if (id == R.id.nav_trackOrder) {
             Intent orderIntent = new Intent(this, OrdersActivity.class);
             startActivity(orderIntent);
         } else if (id == R.id.nav_myAccount) {
@@ -547,11 +550,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             showLanguageCustomAlertDialog();
         }
         else if (id == R.id.nav_setting) {
-            showLanguageCustomAlertDialog();
+            Intent accountIntent = new Intent(this, AccountActivity.class);
+            startActivity(accountIntent);
         }
-        else if (id == R.id.nav_setting) {
-            showLanguageCustomAlertDialog();
-        }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
