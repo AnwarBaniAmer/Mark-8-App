@@ -31,9 +31,15 @@ public class PasswordActivity extends AppCompatActivity implements View.OnClickL
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_password);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.change_password));
 
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setTitle(getResources().getString(R.string.change_password));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
         passwordViewModel = ViewModelProviders.of(this).get(PasswordViewModel.class);
 
         binding.saveChanges.setOnClickListener(this);

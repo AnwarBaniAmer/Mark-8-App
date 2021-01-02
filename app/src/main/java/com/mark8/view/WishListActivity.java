@@ -35,9 +35,15 @@ public class WishListActivity extends AppCompatActivity {
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_wishlist);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.my_wishList));
 
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
+        binding.toolbar.setTitle(getResources().getString(R.string.my_wishList));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
         setUpRecyclerView();
 
         getFavorites();

@@ -11,13 +11,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/lightGray"
+            android:background="@color/background_lightGray"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:background="@color/lightGray"
+                android:background="@color/background_lightGray"
                 android:gravity="start|center"
                 android:paddingStart="@dimen/dimen10dp"
                 android:paddingEnd="@dimen/dimen10dp"
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/lightGray"
+            android:background="@color/background_lightGray"
             android:gravity="start|center"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"
@@ -156,7 +156,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/lightGray"
+            android:background="@color/background_lightGray"
             android:gravity="start|center"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"

@@ -7,7 +7,7 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightGray">
+        android:background="@color/background_lightGray">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -19,7 +19,7 @@
                 android:id="@+id/imageSlider"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="75dp"
                 android:gravity="center"
                 android:scaleType="fitXY"
                 android:src="@drawable/slide1"
@@ -35,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
-                android:text="@string/mobile"
+                android:text="@string/category"
+                android:textColor="@color/title"
                 android:textSize="@dimen/dimen20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
@@ -47,7 +48,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
                 android:text="@string/see_all"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/title"
                 android:textSize="@dimen/dimen20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageSlider" />

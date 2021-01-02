@@ -72,7 +72,10 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.mark8.storage.LanguageUtils.getEnglishState;
 import static com.mark8.storage.LanguageUtils.loadLocale;
+import static com.mark8.storage.LanguageUtils.setEnglishState;
+import static com.mark8.storage.LanguageUtils.setLocale;
 import static com.mark8.utils.Constant.CAMERA_PERMISSION_CODE;
 import static com.mark8.utils.Constant.CAMERA_REQUEST;
 import static com.mark8.utils.Constant.CATEGORY;
@@ -520,8 +523,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
 
-        if (id == R.id.nav_mobiles) {
-            goToCategoryActivity("Mobile");
+        if (id == R.id.nav_home) {
+            startActivity(new Intent(this, ProductActivity.class));
         } else if (id == R.id.nav_laptops) {
             goToCategoryActivity("Laptop");
         } else if (id == R.id.nav_babies) {
@@ -540,11 +543,70 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         } else if (id == R.id.nav_wishList) {
             Intent wishListIntent = new Intent(this, WishListActivity.class);
             startActivity(wishListIntent);
+        } else if (id == R.id.nav_language) {
+            showLanguageCustomAlertDialog();
+        }
+        else if (id == R.id.nav_setting) {
+            showLanguageCustomAlertDialog();
+        }
+        else if (id == R.id.nav_setting) {
+            showLanguageCustomAlertDialog();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void goToProductActivity() {
+        startActivity(new Intent(this, ProductActivity.class));
+    }
+
+    private void showLanguageCustomAlertDialog() {
+        final Dialog dialog = new Dialog(ProductActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_language_dialog);
+
+        Button english = dialog.findViewById(R.id.txtEnglish);
+        Button arabic = dialog.findViewById(R.id.txtArabic);
+
+        if (getEnglishState(this)) {
+            english.setEnabled(false);
+            english.setAlpha(.5f);
+            arabic.setEnabled(true);
+        } else {
+            arabic.setEnabled(false);
+            arabic.setAlpha(.5f);
+            english.setEnabled(true);
+        }
+
+        english.setOnClickListener(v -> {
+            english.setEnabled(true);
+            chooseEnglish();
+            dialog.cancel();
+        });
+
+        arabic.setOnClickListener(v -> {
+            arabic.setEnabled(true);
+            chooseArabic();
+            dialog.cancel();
+        });
+
+        dialog.show();
+    }
+
+    private void chooseArabic() {
+        setLocale(this,"ar");
+        recreate();
+        Toast.makeText(this, "Arabic", Toast.LENGTH_SHORT).show();
+        setEnglishState(this, false);
+    }
+
+    private void chooseEnglish() {
+        setLocale(this,"en");
+        recreate();
+        Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+        setEnglishState(this, true);
     }
 
     private void goToCategoryActivity(String category) {

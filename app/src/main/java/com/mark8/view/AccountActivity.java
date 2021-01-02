@@ -43,8 +43,6 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         loadLocale(this);
         ActivityAccountBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_account);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.my_account));
 
         deleteUserViewModel = ViewModelProviders.of(this).get(DeleteUserViewModel.class);
         fromHistoryViewModel = ViewModelProviders.of(this).get(FromHistoryViewModel.class);

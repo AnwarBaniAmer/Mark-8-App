@@ -32,4 +32,5 @@
     <dimen name="dimen200dp">200dp</dimen>
     <dimen name="dimen35sp">35sp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
+    <dimen name="radius">8dp</dimen>
 </resources>

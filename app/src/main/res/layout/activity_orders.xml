@@ -10,7 +10,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/lightGray"
+            android:background="@color/background_lightGray"
             android:gravity="start|center"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"

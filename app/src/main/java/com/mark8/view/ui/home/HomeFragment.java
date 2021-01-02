@@ -239,7 +239,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, OnNe
                 }
             });
         } else {
-            showOrHideViews(View.INVISIBLE);
+            showOrHideViews(View.VISIBLE);
             binding.included.content.textViewHistory.setVisibility(View.GONE);
             showSnackBar();
         }

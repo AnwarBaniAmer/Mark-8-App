@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/dimen5dp"
-            android:background="@color/lightGray"
+            android:background="@color/background_lightGray"
             tools:context=".view.AllMobilesActivity"
             tools:listitem="@layout/product_list_item" />
 
