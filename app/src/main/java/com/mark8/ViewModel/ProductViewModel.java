@@ -43,14 +43,23 @@ public class ProductViewModel extends ViewModel {
     }
 
     public void loadLaptops(String category, int userId){
+//        // Get our database source factory
+//        LaptopDataSourceFactory laptopDataSourceFactory = new LaptopDataSourceFactory(category,userId);
+//
+//        // Get the live database source from database source factory
+//        productLiveDataSource = laptopDataSourceFactory.getLaptopLiveDataSource();
+//
+//        // Build the paged list
+//        laptopPagedList = (new LivePagedListBuilder(laptopDataSourceFactory, pagedListConfig)).build();
+
         // Get our database source factory
-        LaptopDataSourceFactory laptopDataSourceFactory = new LaptopDataSourceFactory(category,userId);
+        ProductDataSourceFactory productDataSourceFactory = new ProductDataSourceFactory(category,userId);
 
         // Get the live database source from database source factory
-        productLiveDataSource = laptopDataSourceFactory.getLaptopLiveDataSource();
+        productLiveDataSource = productDataSourceFactory.getProductLiveDataSource();
 
         // Build the paged list
-        laptopPagedList = (new LivePagedListBuilder(laptopDataSourceFactory, pagedListConfig)).build();
+        laptopPagedList = (new LivePagedListBuilder(productDataSourceFactory, pagedListConfig)).build();
     }
 
     public void invalidate(){

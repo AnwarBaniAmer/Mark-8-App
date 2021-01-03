@@ -42,6 +42,8 @@
                 android:orientation="vertical"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintStart_toEndOf="@+id/imgProductImage"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintVertical_bias="0.0">
 
@@ -69,6 +71,7 @@
                     android:textSize="@dimen/dimen20sp"
                     card_view:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="176dp" />
+
                 <TextView
                     android:id="@+id/txtProductPrice"
                     android:layout_width="wrap_content"
@@ -83,10 +86,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen35dp"
-                    android:layout_marginEnd="16dp"
-                    android:gravity="center"
-                    android:background="@color/background_lightGray"
                     android:layout_marginTop="@dimen/dimen20dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/background_lightGray"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     tools:layout_editor_absoluteY="105dp">
@@ -161,6 +164,8 @@
                 android:orientation="vertical"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.58"
+                card_view:layout_constraintStart_toEndOf="@+id/imgProductImage2"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintVertical_bias="0.0">
 
@@ -188,6 +193,7 @@
                     android:textSize="@dimen/dimen20sp"
                     card_view:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="176dp" />
+
                 <TextView
                     android:id="@+id/txtProductPrice2"
                     android:layout_width="wrap_content"
@@ -202,10 +208,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen35dp"
-                    android:layout_marginEnd="16dp"
-                    android:gravity="center"
-                    android:background="@color/background_lightGray"
                     android:layout_marginTop="@dimen/dimen20dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/background_lightGray"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     tools:layout_editor_absoluteY="105dp">

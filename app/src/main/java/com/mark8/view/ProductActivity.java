@@ -94,6 +94,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "ProductActivity";
+
     private ActivityProductBinding binding;
     private ProductAdapter mobileAdapter;
     private ProductAdapter laptopAdapter;
@@ -139,7 +140,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         setUpViews();
 
         getMobiles();
-      //  getLaptops();
+         getLaptops();
         getHistory();
         getUserImage();
 
@@ -147,19 +148,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         mNetworkReceiver = new NetworkChangeReceiver();
         mNetworkReceiver.setOnNetworkListener(this);
-
-    }
-
-    private void setUpViews() {
-
-        DrawerLayout drawer = binding.drawerLayout;
-        Toolbar toolbar = binding.toolbar;
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -169,6 +157,18 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+    }
+
+    private void setUpViews() {
+
+        DrawerLayout drawer = binding.drawerLayout;
+        Toolbar toolbar = binding.toolbar;
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         binding.navView.setNavigationItemSelectedListener(this);
 
@@ -219,7 +219,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void getLaptops() {
-        Log.e(TAG, "getLaptops: " );
+        Log.e(TAG, "getLaptops: ");
         if (isNetworkConnected(this)) {
             productViewModel.laptopPagedList.observe(this, new Observer<PagedList<Product>>() {
                 @Override

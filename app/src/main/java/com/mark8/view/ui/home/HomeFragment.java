@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, OnNe
 
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
         productViewModel.loadMobiles("mobile", userID);
-        productViewModel.loadLaptops("laptop", userID);
+        productViewModel.loadLaptops("mobile", userID);
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         historyViewModel.loadHistory(userID);
         uploadPhotoViewModel = ViewModelProviders.of(this).get(UploadPhotoViewModel.class);
@@ -222,8 +222,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, OnNe
             productViewModel.laptopPagedList.observe(this, new Observer<PagedList<Product>>() {
                 @Override
                 public void onChanged(@Nullable PagedList<Product> products) {
-
-
                     laptopAdapter.submitList(products);
                 }
             });
