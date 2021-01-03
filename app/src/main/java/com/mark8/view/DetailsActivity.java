@@ -78,7 +78,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private void getProductDetails() {
         // Receive the product object
         product = getIntent().getParcelableExtra(PRODUCT);
-
+        Log.e(TAG, "getProductDetails:product.getImageUrl()  "+product.getImageUrl() );
         Log.d(TAG, "isFavourite " + product.isFavourite() + " isInCart " + product.isInCart());
 
 //        // Set Custom ActionBar Layout
@@ -100,8 +100,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         binding.priceOfProduct.setText(String.valueOf(product.getProductPrice() + " "+getResources().getString(R.string.currency)));
 
         //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
-        String imageUrl = "https://i.pinimg.com/originals/fe/78/64/fe7864914ac229f8c8fcd4ebf51c5d62.jpg";
-
+       // String imageUrl = "https://i.pinimg.com/originals/fe/78/64/fe7864914ac229f8c8fcd4ebf51c5d62.jpg";
+        String imageUrl = product.getProductSupplier();
+        Log.e(TAG, "getProductDetails: "+imageUrl );
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.dummy_databookshelf);
         requestOptions.error(R.drawable.dummy_databookshelf);

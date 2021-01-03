@@ -25,22 +25,37 @@ public class Product implements Parcelable {
     private int isFavourite;
     @SerializedName("isInCart")
     private int isInCart;
+    @SerializedName("imageUrl")
+    private String imageUrl;
+
     // Include child Parcelable objects
     private Product mInfo;
 
 
-    public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
+
+//    public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
+//        this.productName = productName;
+//        this.productPrice = productPrice;
+//        this.productQuantity = productQuantity;
+//        this.productSupplier = productSupplier;
+//        this.productCategory = productCategory;
+//    }
+public Product(){}
+    public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory,String imageUrl) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.productSupplier = productSupplier;
         this.productCategory = productCategory;
+        this.imageUrl = imageUrl;
+    }
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public Product() {
-
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
-
     public int getProductId() {
         return productId;
     }

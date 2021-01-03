@@ -29,41 +29,40 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Product> callback) {
-        RetrofitClient.getInstance()
-                .getApi().getProductsByCategory(category, userId, FIRST_PAGE)
-                .enqueue(new Callback<ProductApiResponse>() {
-                    @Override
-                    public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {
-                        Log.v("onResponse", "Succeeded " + response.body().getProducts().size());
+        List<Product> productList = new ArrayList<Product>();
+        // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
+        productList.add(new Product("BookShelf IKEA", 55.00, 1, "https://m2.ikea.cn/PIAimages/0659297_PE710588_S5.JPG?f=s", "Furniture", "https://m2.ikea.cn/PIAimages/0659297_PE710588_S5.JPG?f=s"));
+        productList.add(new Product("White BookShelf IKEA", 66.00, 1, "https://www.ikea.cn/cn/en/images/products/billy-bookcase-white__0394567_PE561390_S5.JPG?f=s", "Furniture", "https://www.ikea.cn/cn/en/images/products/billy-bookcase-white__0394567_PE561390_S5.JPG?f=s"));
+        productList.add(new Product("Modular fabric sofas", 689.00, 1, "https://www.ikea.com/jo/en/images/products/groenlid-3-seat-sofa-with-chaise-longue-ljungen-light-green__0577265_PE668719_S5.JPG?f=s", "Furniture", "https://www.ikea.com/jo/en/images/products/groenlid-3-seat-sofa-with-chaise-longue-ljungen-light-green__0577265_PE668719_S5.JPG?f=s"));
+        productList.add(new Product("3-seat sofa, Lejde red-brown", 819.00, 1, "https://www.ikea.com/jo/en/images/products/lidhult-3-seat-sofa-lejde-red-brown__0619208_PE688989_S5.JPG?f=s", "Furniture", "https://www.ikea.com/jo/en/images/products/lidhult-3-seat-sofa-lejde-red-brown__0619208_PE688989_S5.JPG?f=s"));
 
-                        if (response.body().getProducts() == null) {
-                            return;
-                        }
-
-                        if (response.body() != null) {
-                            callback.onResult(response.body().getProducts(), null, FIRST_PAGE + 1);
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<ProductApiResponse> call, Throwable t) {
-                        Log.v("onFailure", "product data sourceFailed to get Products");
-                        Log.e("TAG", "onResponse: " + "if null , add products manually");
-                        //if null , add products manually
-                        List<Product> productList = new ArrayList<Product>();
-                        // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        callback.onResult(productList, null, FIRST_PAGE + 1);
-                    }
-
-
-                });
+        callback.onResult(productList, null, FIRST_PAGE + 1);
+//        RetrofitClient.getInstance()
+//                .getApi().getProductsByCategory(category, userId, FIRST_PAGE)
+//                .enqueue(new Callback<ProductApiResponse>() {
+//                    @Override
+//                    public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {
+//                        Log.v("onResponse", "Succeeded " + response.body().getProducts().size());
+//
+//                        if (response.body().getProducts() == null) {
+//                            return;
+//                        }
+//
+//                        if (response.body() != null) {
+//                            callback.onResult(response.body().getProducts(), null, FIRST_PAGE + 1);
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ProductApiResponse> call, Throwable t) {
+//                        Log.v("onFailure", "product data sourceFailed to get Products");
+//                        Log.e("TAG", "onResponse: " + "if null , add products manually");
+//
+//                    }
+//
+//
+//                });
     }
 
     @Override

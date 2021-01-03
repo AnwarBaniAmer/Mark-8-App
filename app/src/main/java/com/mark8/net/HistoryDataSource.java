@@ -2,6 +2,7 @@ package com.mark8.net;
 
 import androidx.paging.PageKeyedDataSource;
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 
 import com.mark8.model.HistoryApiResponse;
@@ -26,45 +27,44 @@ public class HistoryDataSource extends PageKeyedDataSource<Integer, Product> {
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, Product> callback) {
-        RetrofitClient.getInstance()
-                .getApi().getProductsInHistory(userId,FIRST_PAGE)
-                .enqueue(new Callback<HistoryApiResponse>() {
-                    @Override
-                    public void onResponse(Call<HistoryApiResponse> call, Response<HistoryApiResponse> response) {
-                        Log.v("onResponse", "Succeeded " + response.body().getHistoryList().size());
 
-                        if (response.body().getHistoryList()== null) {
-                            return;
-                        }
+        List<Product> productList = new ArrayList<Product>();
+        // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
+        productList.add(new Product("Modular fabric sofas", 689.00, 1, "https://www.ikea.com/jo/en/images/products/groenlid-3-seat-sofa-with-chaise-longue-ljungen-light-green__0577265_PE668719_S5.JPG?f=s", "Furniture", "https://www.ikea.com/jo/en/images/products/groenlid-3-seat-sofa-with-chaise-longue-ljungen-light-green__0577265_PE668719_S5.JPG?f=s"));
+        productList.add(new Product("White BookShelf IKEA", 66.00, 1, "https://www.ikea.cn/cn/en/images/products/billy-bookcase-white__0394567_PE561390_S5.JPG?f=s", "Furniture", "https://www.ikea.cn/cn/en/images/products/billy-bookcase-white__0394567_PE561390_S5.JPG?f=s"));
+        productList.add(new Product("BookShelf IKEA", 55.00, 1, "https://m2.ikea.cn/PIAimages/0659297_PE710588_S5.JPG?f=s", "Furniture", "https://m2.ikea.cn/PIAimages/0659297_PE710588_S5.JPG?f=s"));
+        productList.add(new Product("3-seat sofa, Lejde red-brown", 819.00, 1, "https://www.ikea.com/jo/en/images/products/lidhult-3-seat-sofa-lejde-red-brown__0619208_PE688989_S5.JPG?f=s", "Furniture", "https://www.ikea.com/jo/en/images/products/lidhult-3-seat-sofa-lejde-red-brown__0619208_PE688989_S5.JPG?f=s"));
 
-                        if (response.body() != null) {
-                            callback.onResult(response.body().getHistoryList(), null, FIRST_PAGE + 1);
-                        }
-                    }
+        callback.onResult(productList, null, FIRST_PAGE + 1);
 
-                    @Override
-                    public void onFailure(Call<HistoryApiResponse> call, Throwable t) {
-                        Log.v("onFailure", "HISTORY Failed to get Products");
-                        Log.v("onFailure", "product data sourceFailed to get Products");
-                        Log.e("TAG", "onResponse: " + "if null , add products manually");
-                        //if null , add products manually
-                        List<Product> productList = new ArrayList<Product>();
-                        // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
-                        callback.onResult(productList, null, FIRST_PAGE + 1);
-                    }
-                });
+//        RetrofitClient.getInstance()
+//                .getApi().getProductsInHistory(userId,FIRST_PAGE)
+//                .enqueue(new Callback<HistoryApiResponse>() {
+//                    @Override
+//                    public void onResponse(Call<HistoryApiResponse> call, Response<HistoryApiResponse> response) {
+//                        Log.v("onResponse", "Succeeded " + response.body().getHistoryList().size());
+//
+//                        if (response.body().getHistoryList()== null) {
+//                            return;
+//                        }
+//
+//                        if (response.body() != null) {
+//                            callback.onResult(response.body().getHistoryList(), null, FIRST_PAGE + 1);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<HistoryApiResponse> call, Throwable t) {
+//                        Log.v("onFailure", "HISTORY Failed to get Products");
+//
+//                    }
+//                });
     }
 
     @Override
     public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, Product> callback) {
         RetrofitClient.getInstance()
-                .getApi().getProductsInHistory(userId,params.key)
+                .getApi().getProductsInHistory(userId, params.key)
                 .enqueue(new Callback<HistoryApiResponse>() {
                     @Override
                     public void onResponse(Call<HistoryApiResponse> call, Response<HistoryApiResponse> response) {
@@ -85,7 +85,7 @@ public class HistoryDataSource extends PageKeyedDataSource<Integer, Product> {
     @Override
     public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, Product> callback) {
         RetrofitClient.getInstance()
-                .getApi().getProductsInHistory(userId,params.key)
+                .getApi().getProductsInHistory(userId, params.key)
                 .enqueue(new Callback<HistoryApiResponse>() {
                     @Override
                     public void onResponse(Call<HistoryApiResponse> call, Response<HistoryApiResponse> response) {

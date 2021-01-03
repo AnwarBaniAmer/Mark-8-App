@@ -70,6 +70,7 @@ import com.mark8.utils.OnNetworkListener;
 import com.mark8.utils.Slide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -138,7 +139,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         setUpViews();
 
         getMobiles();
-        getLaptops();
+      //  getLaptops();
         getHistory();
         getUserImage();
 
@@ -146,6 +147,18 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         mNetworkReceiver = new NetworkChangeReceiver();
         mNetworkReceiver.setOnNetworkListener(this);
+
+    }
+
+    private void setUpViews() {
+
+        DrawerLayout drawer = binding.drawerLayout;
+        Toolbar toolbar = binding.toolbar;
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
 
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -156,40 +169,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-    }
-
-    private void setUpViews() {
-        Toolbar toolbar = binding.toolbar;
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        DrawerLayout drawer = binding.drawerLayout;
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        toolbar.setTitle(getResources().getString(R.string.app_name));
-
-
-        toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        toggle.setDrawerIndicatorEnabled(false); //disable "hamburger to arrow" drawable
-        toggle.setHomeAsUpIndicator(R.drawable.menu); //set your own
-
-        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(drawer.isDrawerOpen(GravityCompat.START)){
-                    drawer.closeDrawer(GravityCompat.START);
-                }else {
-                    drawer.openDrawer(GravityCompat.START);
-                }
-
-            }
-        });
-
 
         binding.navView.setNavigationItemSelectedListener(this);
 
@@ -240,6 +219,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void getLaptops() {
+        Log.e(TAG, "getLaptops: " );
         if (isNetworkConnected(this)) {
             productViewModel.laptopPagedList.observe(this, new Observer<PagedList<Product>>() {
                 @Override
@@ -247,13 +227,14 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                     laptopAdapter.submitList(products);
                 }
             });
-
             binding.included.content.listOfLaptops.setAdapter(laptopAdapter);
             laptopAdapter.notifyDataSetChanged();
         } else {
             showOrHideViews(View.INVISIBLE);
             showSnackBar();
         }
+
+
     }
 
     private void getHistory() {
