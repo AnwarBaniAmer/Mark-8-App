@@ -3,6 +3,7 @@ package com.mark8.view;
 import android.Manifest;
 import android.app.Dialog;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
@@ -160,7 +161,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void setUpViews() {
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
-        //   ActionBar actionbar = getSupportActionBar();
+        ActionBar actionbar = getSupportActionBar();
         DrawerLayout drawer = binding.drawerLayout;
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -175,18 +176,21 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.setDrawerIndicatorEnabled(false); //disable "hamburger to arrow" drawable
         toggle.setHomeAsUpIndicator(R.drawable.menu); //set your own
+
         toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                if(drawer.isDrawerOpen(GravityCompat.START)){
                     drawer.closeDrawer(GravityCompat.START);
-                } else {
+                }else {
                     drawer.openDrawer(GravityCompat.START);
                 }
 
             }
         });
+
+
         binding.navView.setNavigationItemSelectedListener(this);
 
         View headerContainer = binding.navView.getHeaderView(0);
@@ -531,10 +535,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             goToCategoryActivity("Baby");
         } else if (id == R.id.nav_toys) {
             goToCategoryActivity("Toy");
-        }else if (id == R.id.nav_cart) {
-            goToCategoryActivity("Toy");
-        }
-        else if (id == R.id.nav_trackOrder) {
+        } else if (id == R.id.nav_cart) {
+            goToCategoryActivity(getResources().getString(R.string.cart));
+        } else if (id == R.id.nav_trackOrder) {
             Intent orderIntent = new Intent(this, OrdersActivity.class);
             startActivity(orderIntent);
         } else if (id == R.id.nav_myAccount) {
@@ -548,8 +551,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(wishListIntent);
         } else if (id == R.id.nav_language) {
             showLanguageCustomAlertDialog();
-        }
-        else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_setting) {
             Intent accountIntent = new Intent(this, AccountActivity.class);
             startActivity(accountIntent);
         }
@@ -598,14 +600,14 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void chooseArabic() {
-        setLocale(this,"ar");
+        setLocale(this, "ar");
         recreate();
         Toast.makeText(this, "Arabic", Toast.LENGTH_SHORT).show();
         setEnglishState(this, false);
     }
 
     private void chooseEnglish() {
-        setLocale(this,"en");
+        setLocale(this, "en");
         recreate();
         Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         setEnglishState(this, true);

@@ -8,16 +8,23 @@
         android:orientation="vertical"
         tools:context=".view.ShippingAddressActivity">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight">
+
+        </androidx.appcompat.widget.Toolbar>
+
         <TextView
             android:id="@+id/shippingAddress"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="@dimen/dimen10dp"
             android:layout_marginTop="@dimen/dimen10dp"
+            android:text="@string/enter_a_shipping_address"
+            android:textColor="@color/darkBlue"
             android:textSize="@dimen/dimen25sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/enter_a_shipping_address" />
+            android:visibility="gone" />
 
 
         <EditText
@@ -32,7 +39,7 @@
             android:inputType="none"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/vDarkGray"
             tools:hint="@string/user_name" />
 
 
@@ -108,17 +115,34 @@
             android:singleLine="true"
             android:textColorHint="@color/vDarkGray" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_location"
+            android:padding="@dimen/dimen10dp"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:textColor="@color/gray"></TextView>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen150dp"
+            android:padding="@dimen/dimen10dp"
+            android:layout_margin="@dimen/dimen10dp"></com.google.android.gms.maps.MapView>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/proceed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen10dp"
             android:layout_marginLeft="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
             android:layout_marginRight="@dimen/dimen10dp"
             android:layout_marginBottom="@dimen/dimen10dp"
-            android:background="@drawable/custom_button_border2"
-            android:text="@string/proceed"
+            android:background="@drawable/splash"
+            android:text="@string/addAddress"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>
 </layout>

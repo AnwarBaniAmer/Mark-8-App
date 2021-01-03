@@ -1,17 +1,23 @@
 package com.mark8.view;
 
 import androidx.lifecycle.ViewModelProviders;
+
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.mark8.R;
 import com.mark8.ViewModel.ReviewViewModel;
 import com.mark8.ViewModel.ToCartViewModel;
@@ -73,21 +79,35 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         // Receive the product object
         product = getIntent().getParcelableExtra(PRODUCT);
 
-        Log.d(TAG,"isFavourite " + product.isFavourite() + " isInCart " + product.isInCart());
+        Log.d(TAG, "isFavourite " + product.isFavourite() + " isInCart " + product.isInCart());
 
-        // Set Custom ActionBar Layout
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setCustomView(R.layout.action_bar_title_layout);
-        ((TextView) findViewById(R.id.action_bar_title)).setText(product.getProductName());
+//        // Set Custom ActionBar Layout
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setHomeButtonEnabled(true);
+//        actionBar.setDisplayShowCustomEnabled(true);
+//        actionBar.setCustomView(R.layout.action_bar_title_layout);
+     //   ((TextView) findViewById(R.id.action_bar_title)).setText(product.getProductName());
+        binding.toolbar.setTitle(product.getProductName());
+        binding.toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_keyboard_backspace_24));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         binding.nameOfProduct.setText(product.getProductName());
-        binding.priceOfProduct.setText(String.valueOf(product.getProductPrice()));
+        binding.priceOfProduct.setText(String.valueOf(product.getProductPrice() + " "+getResources().getString(R.string.currency)));
 
-     //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
-        String imageUrl = "https://www.ll-mm.com/images/placeholders/iphone5-placeholder.png";
+        //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
+        String imageUrl = "https://i.pinimg.com/originals/fe/78/64/fe7864914ac229f8c8fcd4ebf51c5d62.jpg";
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.dummy_databookshelf);
+        requestOptions.error(R.drawable.dummy_databookshelf);
+
         Glide.with(this)
+                .setDefaultRequestOptions(requestOptions)
                 .load(imageUrl)
                 .into(binding.imageOfProduct);
     }
@@ -102,10 +122,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 reviewAdapter.notifyDataSetChanged();
             }
 
-            if(reviewList.size() == 0){
+            if (reviewList.size() == 0) {
                 binding.listOfReviews.setVisibility(View.GONE);
                 binding.txtFirst.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 binding.listOfReviews.setVisibility(View.VISIBLE);
                 binding.txtFirst.setVisibility(View.GONE);
             }
@@ -116,19 +136,19 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view.getId() == R.id.txtSeeAllReviews) {
             Intent allReviewIntent = new Intent(DetailsActivity.this, AllReviewsActivity.class);
-            allReviewIntent.putExtra(PRODUCT_ID,product.getProductId());
+            allReviewIntent.putExtra(PRODUCT_ID, product.getProductId());
             startActivity(allReviewIntent);
         } else if (view.getId() == R.id.writeReview) {
             Intent allReviewIntent = new Intent(DetailsActivity.this, WriteReviewActivity.class);
-            allReviewIntent.putExtra(PRODUCT_ID,product.getProductId());
+            allReviewIntent.putExtra(PRODUCT_ID, product.getProductId());
             startActivity(allReviewIntent);
-        }else if(view.getId() == R.id.addToCart){
+        } else if (view.getId() == R.id.addToCart) {
             insertToCart(() -> {
                 product.setIsInCart(true);
             });
             Intent cartIntent = new Intent(DetailsActivity.this, CartActivity.class);
             startActivity(cartIntent);
-        }else if(view.getId() == R.id.buy){
+        } else if (view.getId() == R.id.buy) {
             Intent shippingIntent = new Intent(DetailsActivity.this, ShippingAddressActivity.class);
             shippingIntent.putExtra(PRODUCTID, product.getProductId());
             startActivity(shippingIntent);

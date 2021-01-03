@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_cart"
-        android:icon="@drawable/ic_shopping_cart_white"
+        android:icon="@drawable/ic_shopping_cart_grey"
         android:title="@string/cart"
         android:iconTint="@color/title"
         app:showAsAction="always" />

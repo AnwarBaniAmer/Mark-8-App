@@ -45,7 +45,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getSupportActionBar().setElevation(0);
+//        getSupportActionBar().setElevation(0);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
 
         binding.wordList.setOnItemClickListener(this);

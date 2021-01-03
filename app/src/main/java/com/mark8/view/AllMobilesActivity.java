@@ -40,7 +40,7 @@ public class AllMobilesActivity extends AppCompatActivity implements ProductAdap
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_mobiles);
 
         binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_keyboard_backspace_24); // your drawable
-        binding.toolbar.setTitle(getResources().getString(R.string.all_mobiles));
+        binding.toolbar.setTitle(getResources().getString(R.string.newItems));
         binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

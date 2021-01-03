@@ -7,6 +7,9 @@ import android.util.Log;
 import com.mark8.model.HistoryApiResponse;
 import com.mark8.model.Product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +44,19 @@ public class HistoryDataSource extends PageKeyedDataSource<Integer, Product> {
 
                     @Override
                     public void onFailure(Call<HistoryApiResponse> call, Throwable t) {
-                        Log.v("onFailure", "Failed to get Products");
+                        Log.v("onFailure", "HISTORY Failed to get Products");
+                        Log.v("onFailure", "product data sourceFailed to get Products");
+                        Log.e("TAG", "onResponse: " + "if null , add products manually");
+                        //if null , add products manually
+                        List<Product> productList = new ArrayList<Product>();
+                        // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        callback.onResult(productList, null, FIRST_PAGE + 1);
                     }
                 });
     }

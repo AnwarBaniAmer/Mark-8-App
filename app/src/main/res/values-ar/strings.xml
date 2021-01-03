@@ -9,6 +9,10 @@
     <string name="mobile_number">رقم الهاتف</string>
     <string name="delete_account">حذف الحساب</string>
     <string name="register">تسجيل</string>
+    <string name="newItems">الجديد</string>
+    <string name="title_location">الموقع</string>
+    <string name="settings">الإعدادات</string>
+    <string name="currency">دينار اردني</string>
     <string name="sign_up">سجل</string>
     <string name="sign_out">تسجيل الخروج</string>
     <string name="forget_password">هل نسيت كلمة المرور</string>
@@ -29,7 +33,7 @@
     <!--Server Information-->
     <string name="see_all">اظهار الكل</string>
     <string name="mobile">الهاتف المحمول</string>
-    <string name="laptop">الحاسوب المحمول</string>
+    <string name="bestSell">الحاسوب المحمول</string>
     <string name="product_image">صورة المنتج</string>
     <string name="samsung_galaxy_a70">سامسونج جالاكسي ايه 70</string>
     <string name="share_product">مشاركة المنتج</string>

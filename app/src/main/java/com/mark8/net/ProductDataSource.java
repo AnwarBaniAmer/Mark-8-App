@@ -49,14 +49,16 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
                     @Override
                     public void onFailure(Call<ProductApiResponse> call, Throwable t) {
                         Log.v("onFailure", "product data sourceFailed to get Products");
-                        Log.e("TAG", "onResponse: "+"if null , add products manually" );
+                        Log.e("TAG", "onResponse: " + "if null , add products manually");
                         //if null , add products manually
                         List<Product> productList = new ArrayList<Product>();
                         // public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory) {
-                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
-                        productList.add(new Product("White Bed", 15.5, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
+                        productList.add(new Product("BookShelf IKEA", 55.00, 1, "IKEA", "Furniture"));
                         callback.onResult(productList, null, FIRST_PAGE + 1);
                     }
 
@@ -81,6 +83,7 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
                     @Override
                     public void onFailure(Call<ProductApiResponse> call, Throwable t) {
                         Log.v("onFailure", "Failed to previous Products");
+
                     }
                 });
     }

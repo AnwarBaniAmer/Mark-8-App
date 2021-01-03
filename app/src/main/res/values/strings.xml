@@ -28,7 +28,8 @@
     <!--Server Information-->
     <string name="see_all">See All</string>
     <string name="mobile">Mobile</string>
-    <string name="laptop">Laptop</string>
+    <string name="newItems">New</string>
+    <string name="bestSell">Best Sell</string>
     <string name="product_image">Product Image</string>
     <string name="samsung_galaxy_a70">Samsung Galaxy A70</string>
     <string name="share_product">Share Product</string>
@@ -187,12 +188,13 @@
     </string-array>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">Orders</string>
     <string name="title_notifications">Notifications</string>
     <string name="welcome">Welcome To MARK 8 App</string>
     <string name="explore_us">Explore Us</string>
     <string name="title_location">Location</string>
     <string name="settings">Settings</string>
     <string name="currency">JOD</string>
+    <string name="addAddress">Add Address</string>
 
 </resources>

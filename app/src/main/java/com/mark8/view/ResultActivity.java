@@ -1,13 +1,19 @@
 package com.mark8.view;
 
 import androidx.lifecycle.ViewModelProviders;
+
 import android.content.Intent;
 import android.content.res.Configuration;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+
+import android.view.View;
 import android.widget.Toast;
 
 import com.mark8.R;
@@ -41,8 +47,14 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String keyword = intent.getStringExtra(KEYWORD);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(keyword);
+        binding.toolbar.setTitle(keyword);
+        binding.toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_keyboard_backspace_24));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         userId = LoginUtils.getInstance(this).getUserInfo().getId();
 
@@ -71,7 +83,7 @@ public class ResultActivity extends AppCompatActivity {
                         intent.putExtra(PRODUCT, (product));
                         startActivity(intent);
                     }
-                },this);
+                }, this);
             }
             binding.listOfSearchedList.setAdapter(searchAdapter);
         });

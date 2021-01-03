@@ -1,12 +1,17 @@
 package com.mark8.view;
 
 import androidx.lifecycle.ViewModelProviders;
+
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.View;
 
 import com.mark8.R;
@@ -35,9 +40,14 @@ public class CartActivity extends AppCompatActivity {
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cart);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.cart));
-
+        binding.toolbar.setTitle(getResources().getString(R.string.cart));
+        binding.toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_keyboard_backspace_24));
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         setUpRecyclerView();
 
         getProductsInCart();

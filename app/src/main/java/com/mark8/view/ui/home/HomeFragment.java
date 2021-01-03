@@ -2,20 +2,27 @@ package com.mark8.view.ui.home;
 
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
+
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.net.Uri;
 import android.os.Bundle;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -133,13 +140,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, OnNe
                 startActivity(laptopIntent);
                 break;
             case R.id.profile_image:
-         //  showCustomAlertDialog();
+                //  showCustomAlertDialog();
                 break;
             case R.id.txtCash:
-             //   showNormalAlertDialog(getString(R.string.cash));
+                //   showNormalAlertDialog(getString(R.string.cash));
                 break;
             case R.id.txtReturn:
-               // showNormalAlertDialog(getString(R.string.returnProduct));
+                // showNormalAlertDialog(getString(R.string.returnProduct));
                 break;
             case R.id.txtSearch:
                 Intent searchIntent = new Intent(getActivity(), SearchActivity.class);
@@ -214,6 +221,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, OnNe
             productViewModel.laptopPagedList.observe(this, new Observer<PagedList<Product>>() {
                 @Override
                 public void onChanged(@Nullable PagedList<Product> products) {
+
+
                     laptopAdapter.submitList(products);
                 }
             });

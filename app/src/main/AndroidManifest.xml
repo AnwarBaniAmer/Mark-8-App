@@ -62,7 +62,6 @@
         <activity
             android:name=".view.DetailsActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:parentActivityName=".view.AllMobilesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -104,7 +103,7 @@
             android:name=".view.AccountActivity"
             android:label="@string/my_account"
             android:parentActivityName=".view.ProductActivity"
-            android:theme="@style/AccountTheme">
+           >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mark8.view.ProductActivity" />
@@ -192,7 +191,7 @@
         </activity>
         <activity
             android:name=".view.SearchActivity"
-            android:theme="@style/noAnimTheme" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity android:name=".view.ResultActivity" />
 
         <receiver android:name=".receiver.NetworkChangeReceiver" />
