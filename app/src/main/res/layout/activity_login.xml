@@ -105,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="@color/blue"
             android:text="@string/forget_password"
             android:textSize="@dimen/dimen14sp" />
 

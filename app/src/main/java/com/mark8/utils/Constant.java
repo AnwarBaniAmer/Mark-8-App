@@ -2,7 +2,10 @@ package com.mark8.utils;
 
 public class Constant {
 
-    public static String LOCALHOST = "http://192.168.1.6:3000/";
+   // public static String LOCALHOST = "http://172.20.10.2:3000/";
+ // public static String LOCALHOST = "http://192.168.85.2:3000/";
+ // public static String LOCALHOST = "http://localhost:3000/";
+   public static String LOCALHOST = "http://10.0.2.2:3000/";
 
     // Constant Variables
     public static String PRODUCT = "product";

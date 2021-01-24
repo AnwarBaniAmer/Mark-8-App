@@ -70,6 +70,9 @@ public interface Api {
     @GET("products")
     Call<ProductApiResponse> getProductsByCategory(@Query("category") String category, @Query("userId") int userId,@Query("page") int page);
 
+    @GET("products")
+    Call<ProductApiResponse> getProductsByCategory(@Query("category") String category,@Query("page") int page);
+
     @GET("products/search")
     Call<ProductApiResponse> searchForProduct(@Query("q") String keyword, @Query("userId") int userId);
 

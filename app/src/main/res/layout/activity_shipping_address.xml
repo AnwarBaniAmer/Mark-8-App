@@ -122,13 +122,15 @@
             android:padding="@dimen/dimen10dp"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"
-            android:textColor="@color/gray"></TextView>
+            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:textColor="@color/vDarkGray"></TextView>
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen150dp"
             android:padding="@dimen/dimen10dp"
+            android:visibility="gone"
             android:layout_margin="@dimen/dimen10dp"></com.google.android.gms.maps.MapView>
 
         <androidx.appcompat.widget.AppCompatButton

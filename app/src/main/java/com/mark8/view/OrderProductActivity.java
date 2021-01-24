@@ -5,6 +5,8 @@ import android.content.Intent;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -23,6 +25,7 @@ import static com.mark8.utils.Constant.PRODUCTID;
 
 public class OrderProductActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "OrderProductActivity";
     private ActivityOrderProductBinding binding;
     private OrderingViewModel orderingViewModel;
 
@@ -39,6 +42,7 @@ public class OrderProductActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void orderProduct() {
+        Log.e(TAG, "orderProduct: " );
         String nameOnCard = binding.nameOnCard.getText().toString().trim();
         String cardNumber = binding.cardNumber.getText().toString().trim();
 
@@ -62,6 +66,8 @@ public class OrderProductActivity extends AppCompatActivity implements View.OnCl
                 e.printStackTrace();
             }
         });
+        Intent homeIntent = new Intent(OrderProductActivity.this, ProductActivity.class);
+        startActivity(homeIntent);
     }
 
     @Override

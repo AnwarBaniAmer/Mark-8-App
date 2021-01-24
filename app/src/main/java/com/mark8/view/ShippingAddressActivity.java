@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -63,6 +64,7 @@ public class ShippingAddressActivity extends AppCompatActivity implements View.O
     }
 
     private void addShippingAddress() {
+        Log.e(TAG, "addShippingAddress: " );
         String address = binding.address.getText().toString().trim();
         String city = binding.city.getText().toString().trim();
         String country = binding.country.getText().toString().trim();
@@ -84,6 +86,9 @@ public class ShippingAddressActivity extends AppCompatActivity implements View.O
             orderProductIntent.putExtra(PRODUCTID, productId);
             startActivity(orderProductIntent);
         });
+        Intent orderProductIntent = new Intent(ShippingAddressActivity.this, OrderProductActivity.class);
+        orderProductIntent.putExtra(PRODUCTID, productId);
+        startActivity(orderProductIntent);
     }
 
 //    private void setUpMapIfNeeded() {

@@ -196,5 +196,9 @@
     <string name="settings">Settings</string>
     <string name="currency">JOD</string>
     <string name="addAddress">Add Address</string>
+    <string name="skip">Skip</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="SetLocation">Set Location</string>
+    <string name="added">Added</string>
 
 </resources>

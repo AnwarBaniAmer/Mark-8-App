@@ -9,37 +9,46 @@ import android.view.View;
 
 import com.mark8.R;
 import com.mark8.databinding.ActivityWelcomeBinding;
+import com.mark8.view.ui.map.MapsActivity;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityWelcomeBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
 
         binding.loginBtn.setOnClickListener(this);
-     binding.signUpTxt.setOnClickListener(this);
+        binding.signUpTxt.setOnClickListener(this);
+        binding.skipTxt.setOnClickListener(this);
         binding.logo.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.login_btn:
+            case R.id.loginBtn:
                 goToLoginActivity();
                 break;
-            case R.id.sign_up_txt:
+            case R.id.signUpTxt:
                 goToSignUpActivity();
                 break;
-            case R.id.logo:
+            case R.id.skipTxt:
                 goToMainActivity();
+                break;
+            case R.id.logo:
+                //     goToMainActivity();
                 break;
         }
     }
 
     private void goToMainActivity() {
-        Intent intent = new Intent(this, ProductActivity.class);
+//        Intent intent = new Intent(this, ProductActivity.class);
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
 

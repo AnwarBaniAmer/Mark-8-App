@@ -1,5 +1,6 @@
 package com.mark8.view;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -78,7 +79,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private void getProductDetails() {
         // Receive the product object
         product = getIntent().getParcelableExtra(PRODUCT);
-        Log.e(TAG, "getProductDetails:product.getImageUrl()  "+product.getImageUrl() );
         Log.d(TAG, "isFavourite " + product.isFavourite() + " isInCart " + product.isInCart());
 
 //        // Set Custom ActionBar Layout
@@ -99,9 +99,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         binding.nameOfProduct.setText(product.getProductName());
         binding.priceOfProduct.setText(String.valueOf(product.getProductPrice() + " "+getResources().getString(R.string.currency)));
 
-        //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
-       // String imageUrl = "https://i.pinimg.com/originals/fe/78/64/fe7864914ac229f8c8fcd4ebf51c5d62.jpg";
-        String imageUrl = product.getProductSupplier();
+       //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
+          String imageUrl = product.getImageUrl();
+
         Log.e(TAG, "getProductDetails: "+imageUrl );
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.dummy_databookshelf);
@@ -144,11 +144,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             allReviewIntent.putExtra(PRODUCT_ID, product.getProductId());
             startActivity(allReviewIntent);
         } else if (view.getId() == R.id.addToCart) {
-            insertToCart(() -> {
-                product.setIsInCart(true);
-            });
-            Intent cartIntent = new Intent(DetailsActivity.this, CartActivity.class);
-            startActivity(cartIntent);
+//            insertToCart(() -> {
+//                product.setIsInCart(true);
+//            });
+//            Intent cartIntent = new Intent(DetailsActivity.this, CartActivity.class);
+//            startActivity(cartIntent);
+
+            binding.addToCart.setBackgroundColor(getResources().getColor( R.color.green));
+            binding.addToCart.setTextColor(getResources().getColor(R.color.white));
+            binding.addToCart.setText(getResources().getString(R.string.added));
         } else if (view.getId() == R.id.buy) {
             Intent shippingIntent = new Intent(DetailsActivity.this, ShippingAddressActivity.class);
             shippingIntent.putExtra(PRODUCTID, product.getProductId());

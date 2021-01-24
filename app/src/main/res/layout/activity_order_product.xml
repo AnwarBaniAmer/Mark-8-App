@@ -15,7 +15,7 @@
             android:layout_marginStart="@dimen/dimen10dp"
             android:layout_marginTop="@dimen/dimen10dp"
             android:text="@string/add_a_credit_or_debit_card"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/dark"
             android:textSize="@dimen/dimen25sp" />
 
 
@@ -129,8 +129,9 @@
             android:layout_marginTop="@dimen/dimen20dp"
             android:layout_marginRight="@dimen/dimen10dp"
             android:layout_marginBottom="@dimen/dimen10dp"
-            android:background="@drawable/custom_button_border2"
+            android:background="@drawable/splash"
             android:text="@string/add_your_card"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>

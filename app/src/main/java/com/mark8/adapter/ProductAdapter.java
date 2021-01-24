@@ -97,10 +97,9 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
             holder.binding.txtProductPrice.setText(formattedPrice + mContext.getResources().getString(R.string.currency));
 
             // Load the Product image into ImageView
-//            String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
-           // String imageUrl = "https://i.pinimg.com/originals/fe/78/64/fe7864914ac229f8c8fcd4ebf51c5d62.jpg";
-
+         // String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
             String imageUrl = product.getImageUrl();
+
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.placeholder(R.drawable.dummy_databookshelf);
             requestOptions.error(R.drawable.dummy_databookshelf);
@@ -109,9 +108,6 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
                     .setDefaultRequestOptions(requestOptions)
                     .load(imageUrl)
                     .into(holder.binding.imgProductImage);
-
-
-//            Log.d("imageUrl", imageUrl);
 
             holder.binding.imgShare.setOnClickListener(v -> shareProduct(mContext, productName, imageUrl));
 

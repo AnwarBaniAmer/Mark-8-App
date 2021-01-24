@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.ui.map.mapFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:paddingTop="@dimen/dimen20dp">
+
+            <EditText
+                android:id="@+id/editQuery"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_arrow_back"
+                android:drawableEnd="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:gravity="start|center"
+                android:hint="@string/search"
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="8dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="#979797"
+                android:textSize="@dimen/dimen16sp" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

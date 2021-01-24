@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
@@ -19,6 +21,7 @@ import com.mark8.databinding.ActivitySignupBinding;
 import com.mark8.model.User;
 import com.mark8.storage.LoginUtils;
 import com.mark8.utils.Validation;
+import com.mark8.view.ui.map.MapsActivity;
 
 import static com.mark8.storage.LanguageUtils.loadLocale;
 
@@ -101,19 +104,32 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Dialog);
         progressDialog.setMessage(getString(R.string.create_account));
         progressDialog.setCancelable(false);
-        progressDialog.show();
 
-        registerViewModel.getRegisterResponseLiveData(new User(name, email, password)).observe(this, registerApiResponse -> {
-            if (!registerApiResponse.isError()) {
-                Toast.makeText(this, registerApiResponse.getMessage(), Toast.LENGTH_LONG).show();
-                LoginUtils.getInstance(this).saveUserInfo(registerApiResponse.getUser());
+
+//        registerViewModel.getRegisterResponseLiveData(new User(name, email, password)).observe(this, registerApiResponse -> {
+//            if (!registerApiResponse.isError()) {
+//                Toast.makeText(this, registerApiResponse.getMessage(), Toast.LENGTH_LONG).show();
+//                LoginUtils.getInstance(this).saveUserInfo(registerApiResponse.getUser());
+//                progressDialog.dismiss();
+//                goToProductActivity();
+//            }else {
+//                progressDialog.cancel();
+//                Toast.makeText(this, registerApiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        progressDialog.show();
+        int SPLASH_TIME_OUT = 3000;
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
                 progressDialog.dismiss();
-                goToProductActivity();
-            }else {
-                progressDialog.cancel();
-                Toast.makeText(this, registerApiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SignUpActivity.this, MapsActivity.class);
+                startActivity(intent);
             }
-        });
+        }, SPLASH_TIME_OUT);
+
 
     }
 
@@ -148,5 +164,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         SpannableString str = new SpannableString(boldText + normalText);
         str.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         binding.textViewLogin.setText(str);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }

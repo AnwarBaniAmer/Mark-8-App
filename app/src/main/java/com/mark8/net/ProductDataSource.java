@@ -38,11 +38,11 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
 
         callback.onResult(productList, null, FIRST_PAGE + 1);
 //        RetrofitClient.getInstance()
-//                .getApi().getProductsByCategory(category, userId, FIRST_PAGE)
+//                .getApi().getProductsByCategory(category, 1, 1)
 //                .enqueue(new Callback<ProductApiResponse>() {
 //                    @Override
 //                    public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {
-//                        Log.v("onResponse", "Succeeded " + response.body().getProducts().size());
+//                        Log.v("onResponse", "Succeeded " + response.body().getProducts());
 //
 //                        if (response.body().getProducts() == null) {
 //                            return;
@@ -57,8 +57,8 @@ public class ProductDataSource extends PageKeyedDataSource<Integer, Product> {
 //                    @Override
 //                    public void onFailure(Call<ProductApiResponse> call, Throwable t) {
 //                        Log.v("onFailure", "product data sourceFailed to get Products");
-//                        Log.e("TAG", "onResponse: " + "if null , add products manually");
-//
+//                        Log.e("onFailure", "product data source: " + "if null , add products manually");
+//                        Log.e("getCause", "onFailure: ",t.getCause() );
 //                    }
 //
 //

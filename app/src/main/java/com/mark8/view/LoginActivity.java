@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import com.mark8.ViewModel.LoginViewModel;
 import com.mark8.databinding.ActivityLoginBinding;
 import com.mark8.storage.LoginUtils;
 import com.mark8.utils.Validation;
+import com.mark8.view.ui.map.MapsActivity;
 
 import static com.mark8.storage.LanguageUtils.loadLocale;
 
@@ -84,19 +87,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Dialog);
         progressDialog.setMessage(getString(R.string.loading));
         progressDialog.setCancelable(false);
-        progressDialog.show();
 
-        loginViewModel.getLoginResponseLiveData(email,password).observe(this, loginApiResponse -> {
-            if (!loginApiResponse.isError()) {
-                LoginUtils.getInstance(this).saveUserInfo(loginApiResponse);
-                Toast.makeText(this, loginApiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+//        loginViewModel.getLoginResponseLiveData(email,password).observe(this, loginApiResponse -> {
+//            if (!loginApiResponse.isError()) {
+//                LoginUtils.getInstance(this).saveUserInfo(loginApiResponse);
+//                Toast.makeText(this, loginApiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+//                progressDialog.dismiss();
+//                goToProductActivity();
+//            }else {
+//                progressDialog.cancel();
+//                Toast.makeText(this, loginApiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        progressDialog.show();
+        int SPLASH_TIME_OUT = 3000;
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
                 progressDialog.dismiss();
-                goToProductActivity();
-            }else {
-                progressDialog.cancel();
-                Toast.makeText(this, loginApiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+                startActivity(intent);
             }
-        });
+        }, SPLASH_TIME_OUT);
+
     }
 
     @Override
@@ -130,4 +147,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onBackPressed();
+    }
 }

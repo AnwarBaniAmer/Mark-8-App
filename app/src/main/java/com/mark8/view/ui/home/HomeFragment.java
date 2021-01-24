@@ -204,7 +204,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, OnNe
             productViewModel.productPagedList.observe(this, new Observer<PagedList<Product>>() {
                 @Override
                 public void onChanged(@Nullable PagedList<Product> products) {
-                    Log.e(TAG, "onChanged: getImageUrl"+products.get(0).getImageUrl() );
                     mobileAdapter.submitList(products);
                 }
             });

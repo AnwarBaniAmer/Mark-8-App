@@ -19,7 +19,7 @@ public class Product implements Parcelable {
     private String productSupplier;
     @SerializedName("category")
     private String productCategory;
-    @SerializedName("image")
+//    @SerializedName("image")
     private String productImage;
     @SerializedName("isFavourite")
     private int isFavourite;
@@ -27,6 +27,7 @@ public class Product implements Parcelable {
     private int isInCart;
     @SerializedName("imageUrl")
     private String imageUrl;
+
 
     // Include child Parcelable objects
     private Product mInfo;
@@ -40,7 +41,7 @@ public class Product implements Parcelable {
 //        this.productSupplier = productSupplier;
 //        this.productCategory = productCategory;
 //    }
-public Product(){}
+    public Product(){}
     public Product(String productName, double productPrice, int productQuantity, String productSupplier, String productCategory,String imageUrl) {
         this.productName = productName;
         this.productPrice = productPrice;

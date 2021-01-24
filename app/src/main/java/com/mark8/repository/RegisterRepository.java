@@ -40,7 +40,7 @@ public class RegisterRepository {
 
             @Override
             public void onFailure(retrofit2.Call<RegisterApiResponse> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
+                Log.e(TAG, t.getMessage());
             }
         });
         return mutableLiveData;
