@@ -94,7 +94,7 @@ public class ProductAdapter extends PagedListAdapter<Product, ProductAdapter.Pro
             DecimalFormat formatter = new DecimalFormat("#,###,###");
             Log.e("TAG", "onBindViewHolder: "+"getProductPrice"+product.getProductPrice() );
             String formattedPrice = formatter.format(product.getProductPrice());
-            holder.binding.txtProductPrice.setText(formattedPrice + mContext.getResources().getString(R.string.currency));
+            holder.binding.txtProductPrice.setText(product.getProductPrice() +" "+ mContext.getResources().getString(R.string.currency));
 
             // Load the Product image into ImageView
          // String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");

@@ -100,7 +100,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         binding.priceOfProduct.setText(String.valueOf(product.getProductPrice() + " "+getResources().getString(R.string.currency)));
 
        //   String imageUrl = LOCALHOST + product.getProductImage().replaceAll("\\\\", "/");
-          String imageUrl = product.getImageUrl();
+          String imageUrl = product.getProductSupplier();
 
         Log.e(TAG, "getProductDetails: "+imageUrl );
         RequestOptions requestOptions = new RequestOptions();

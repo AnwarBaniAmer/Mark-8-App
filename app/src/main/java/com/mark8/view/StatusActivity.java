@@ -24,9 +24,19 @@ public class StatusActivity extends AppCompatActivity implements View.OnClickLis
 
         // Receive the order object
         Intent intent = getIntent();
-        Order order = (Order) intent.getSerializableExtra(ORDER);
+     //   Order order = (Order) intent.getSerializableExtra(ORDER);
+        Order order = new Order();
+        order.setProductId(1);
+        order.setOrderDateStatus("Date");
+        order.setOrderNumber("5623");
+        order.setProductName("LEIFARNE");
+        order.setProductPrice(55.00);
+        order.setShippingPhone("+962791488012");
+        order.setUserName("Majd");
+        order.setOrderDate("2021-1-23");
+        order.setShippingAddress("Amman-Mekka street");
 
-        productId = order.getProductId();
+                productId = order.getProductId();
         binding.orderDate.setText(order.getOrderDate());
         binding.orderNumber.setText(order.getOrderNumber());
         binding.userName.setText(order.getUserName());

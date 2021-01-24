@@ -12,10 +12,13 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 
 import com.google.android.gms.location.LocationListener;
+
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,18 +37,20 @@ import com.mark8.databinding.ActivityDetailsBinding;
 import com.mark8.databinding.ActivityMapsBinding;
 import com.mark8.view.ProductActivity;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener ,
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener,
         LocationListener, GoogleApiClient.ConnectionCallbacks,
-            GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener,
+        GoogleMap.OnMarkerClickListener {
 
-        Location mLastLocation;
-        Marker mCurrLocationMarker;
-        GoogleApiClient mGoogleApiClient;
-        LocationRequest mLocationRequest;
+    Location mLastLocation;
+    Marker mCurrLocationMarker;
+    GoogleApiClient mGoogleApiClient;
+    LocationRequest mLocationRequest;
 
-        private ActivityMapsBinding binding;
+    private ActivityMapsBinding binding;
     private GoogleMap mMap;
-Button ok;
+    Button ok;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +67,7 @@ Button ok;
                 onBackPressed(); // Implemented by activity
             }
         });
-        ok=findViewById(R.id.ok);
+        ok = findViewById(R.id.ok);
         ok.setOnClickListener(this);
         mapFragment.getMapAsync(this);
     }
@@ -78,14 +83,19 @@ Button ok;
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-//        mMap = googleMap;
-//
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Amman"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        mMap = googleMap;
 
+        mMap = googleMap;
+        // Add a marker in Sydney, Australia,
+        // and move the map's camera to the same location.
+        LatLng amman = new LatLng(31.9539, 35.9106);
+        googleMap.addMarker(new MarkerOptions()
+                .position(amman)
+                .title("Marker in Amman"));
+
+       googleMap.moveCamera(CameraUpdateFactory.newLatLng(amman));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo( 12));
+//        googleMap.setMinZoomPreference(6.0f);
+//        googleMap.setMaxZoomPreference(14.0f);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
@@ -93,11 +103,13 @@ Button ok;
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
-        }
-        else {
+        } else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
+
+        // Set a listener for marker click.
+        mMap.setOnMarkerClickListener(this);
     }
 
     private void buildGoogleApiClient() {
@@ -110,14 +122,15 @@ Button ok;
 
     @Override
     public void onClick(View v) {
-       if(v.getId() == R.id.ok){
-           Intent intent = new Intent(this, ProductActivity.class);
-           startActivity(intent);
-       }
+        if (v.getId() == R.id.ok) {
+            Intent intent = new Intent(this, ProductActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.e("TAG", "onLocationChanged: "+location );
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
@@ -127,19 +140,18 @@ Button ok;
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
+        Toast.makeText(this, "Current Position :" + latLng + "", Toast.LENGTH_SHORT).show();
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-
+     //   mMap.animateCamera(CameraUpdateFactory.zoomTo(5));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo( 12));
         //stop location updates
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, (com.google.android.gms.location.LocationListener) this);
         }
-
-
     }
 
     @Override
@@ -151,7 +163,7 @@ Button ok;
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest,  this);
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
     }
 
@@ -164,5 +176,40 @@ Button ok;
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Log.e("TAG", "onMarkerClick: "+marker.getTitle() );
+        // Retrieve the data from the marker.
+        Integer clickCount = (Integer) marker.getTag();
+
+        // Check if a click count was set, then display the click count.
+        if (clickCount != null) {
+            clickCount = clickCount + 1;
+            marker.setTag(clickCount);
+            Toast.makeText(this,
+                    marker.getTitle() +
+                            " has been clicked " + clickCount + " times.",
+                    Toast.LENGTH_SHORT).show();
+            //Place current location marker
+           // LatLng latLng = new LatLng(marker.getPosition(), location.getLongitude());
+            MarkerOptions markerOptions = new MarkerOptions();
+           markerOptions.position(marker.getPosition());
+            markerOptions.title("Current Position");
+            //Toast.makeText(this, "Current Position :" + latLng + "", Toast.LENGTH_SHORT).show();
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+            mCurrLocationMarker = mMap.addMarker(markerOptions);
+
+            //move map camera
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(0));
+
+        }
+
+        // Return false to indicate that we have not consumed the event and that we wish
+        // for the default behavior to occur (which is for the camera to move such that the
+        // marker is centered and for the marker's info window to open, if it has one).
+        return false;
     }
 }

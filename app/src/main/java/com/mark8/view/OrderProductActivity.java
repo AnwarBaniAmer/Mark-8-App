@@ -21,6 +21,7 @@ import com.mark8.storage.LoginUtils;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
+import static com.mark8.utils.Constant.ORDER;
 import static com.mark8.utils.Constant.PRODUCTID;
 
 public class OrderProductActivity extends AppCompatActivity implements View.OnClickListener{
@@ -66,8 +67,12 @@ public class OrderProductActivity extends AppCompatActivity implements View.OnCl
                 e.printStackTrace();
             }
         });
-        Intent homeIntent = new Intent(OrderProductActivity.this, ProductActivity.class);
-        startActivity(homeIntent);
+//        Intent homeIntent = new Intent(OrderProductActivity.this, ProductActivity.class);
+//        startActivity(homeIntent);
+        Intent StatusActivityIntent = new Intent(OrderProductActivity.this, StatusActivity.class);
+        // Pass an object of order class
+     //  StatusActivityIntent.putExtra(ORDER, (order));
+        startActivity(StatusActivityIntent);
     }
 
     @Override
