@@ -7,7 +7,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".view.AddProductActivity">
-
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbarHeight"></androidx.appcompat.widget.Toolbar>
         <EditText
             android:id="@+id/txtName"
             android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -149,7 +150,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
+        Log.e(TAG, "onBackPressed: " );
         super.onBackPressed();
-        onBackPressed();
+        LoginActivity.super.onBackPressed();
     }
 }

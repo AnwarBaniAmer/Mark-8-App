@@ -17,7 +17,7 @@
             android:gravity="center"
             android:text="@string/welcome"
             android:textSize="@dimen/dimen20sp"
-
+            android:textColor="@color/blueDark"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +30,7 @@
             android:gravity="center"
             android:text="@string/explore_us"
             android:textSize="@dimen/dimen20sp"
+            android:textColor="@color/blueDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +48,11 @@
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/dimen35sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/loginBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.006"
             app:srcCompat="@drawable/mark8"></ImageView>
 
         <ImageView
@@ -74,14 +77,15 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"></Button>
 
         <TextView
             android:id="@+id/signUpTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen48dp"
             android:gravity="center"
             android:text="@string/sign_up"
             android:textColor="@color/blue"
@@ -96,14 +100,15 @@
         <TextView
             android:id="@+id/skipTxt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen48dp"
             android:layout_marginBottom="36dp"
-            android:gravity="center"
+            android:gravity="right"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"
             android:text="@string/skip"
             android:textColor="@color/blue"
             android:textSize="@dimen/dimen20sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.906"

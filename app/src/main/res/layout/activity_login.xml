@@ -25,6 +25,7 @@
             android:text="@string/sign_in"
             android:textColor="@color/title"
             android:textSize="@dimen/dimen30sp"
+            android:labelFor="@id/buttonLogin"
             android:textStyle="bold" />
 
         <!--  Email Label -->
@@ -42,6 +43,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_border"
                 android:hint="@string/email"
+                android:contentDescription="@string/email"
                 android:inputType="textEmailAddress"
                 android:padding="@dimen/dimen5dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +66,7 @@
                 android:hint="@string/password"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
+                android:contentDescription="@string/email"
                 android:maxLines="1"
                 android:padding="5dp"
                 android:singleLine="true" />
@@ -79,8 +82,9 @@
             android:layout_marginBottom="@dimen/dimen24dp"
             android:background="@drawable/splash"
             android:text="@string/sign_in"
+            android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/buttonLabelColor"
             android:textSize="@dimen/dimen18sp" />
 
         <View
@@ -94,7 +98,7 @@
         <TextView
             android:id="@+id/textViewSignUp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen48dp"
             android:layout_marginBottom="@dimen/dimen10dp"
             android:gravity="center"
             android:text="@string/new_customer_create_your_account"
@@ -103,7 +107,7 @@
         <TextView
             android:id="@+id/forgetPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen48dp"
             android:gravity="center"
             android:textColor="@color/blue"
             android:text="@string/forget_password"

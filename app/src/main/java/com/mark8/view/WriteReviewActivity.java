@@ -38,8 +38,7 @@ public class WriteReviewActivity extends AppCompatActivity implements View.OnCli
         loadLocale(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_write_review);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.write_review));
+     binding.toolbar.setTitle(getResources().getString(R.string.write_review));
 
         writeReviewViewModel = ViewModelProviders.of(this).get(WriteReviewViewModel.class);
 

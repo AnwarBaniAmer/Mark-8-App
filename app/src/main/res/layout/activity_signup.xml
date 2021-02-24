@@ -43,6 +43,7 @@
                     android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:hint="@string/name"
                     android:inputType="textPersonName"
                     android:padding="@dimen/dimen5dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +62,7 @@
                     android:id="@+id/userEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:hint="@string/name"
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/dimen5dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +87,7 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:padding="@dimen/dimen5dp"
+                    android:hint="@string/password"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,17 +117,19 @@
                 android:padding="@dimen/dimen12dp"
                 android:text="@string/create_your_account"
                 android:textAllCaps="false"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen18sp" />
 
             <TextView
                 android:id="@+id/textViewLogin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dimen48dp"
                 android:layout_marginBottom="@dimen/dimen24dp"
                 android:fontFamily="@font/seagoui"
                 android:gravity="center"
                 android:textSize="@dimen/dimen16sp"
+                android:textColor="@color/gray"
                 tools:text="@string/sign_in_already_a_customer" />
         </LinearLayout>
     </ScrollView>
